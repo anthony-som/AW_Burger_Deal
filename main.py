@@ -7,9 +7,7 @@ from win10toast import ToastNotifier
 
 
 print('Running...')
-
 toaster = ToastNotifier()
-
 
 def job():
     response = requests.get('https://api-web.nhle.com/v1/club-schedule/TOR/week/now') # Get schedule for the Toronto Maple Leafs
@@ -30,11 +28,12 @@ def job():
     game_today = game_check()
     
     if game_today:
-        toaster.show_toast('A&W Burger', 'There is a two dollar burger', duration=10)
+        toaster.show_toast('A&W Burger', 'There is a $2 Teen burger on the A&W App, go get it!', duration=10)
         print('There is a game today')
     else:
-        toaster.show_toast('A&W Burger', 'There is no burger deal', duration=10)
+        toaster.show_toast('A&W Burger', 'There is no teen burger deal today! ', duration=10)
         print('There is no game today')
+job() # run job once on startup
 
 # Schedule the job every minute
 # schedule.every(1).minutes.do(job)
